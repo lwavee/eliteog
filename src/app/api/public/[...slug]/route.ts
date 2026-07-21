@@ -4,6 +4,7 @@ import Service from '@/models/Service';
 import Portfolio from '@/models/Portfolio';
 import Blog from '@/models/Blog';
 import Enquiry from '@/models/Enquiry';
+import JobApplication from '@/models/JobApplication';
 import Testimonial from '@/models/Testimonial';
 import Faq from '@/models/Faq';
 import Subscriber from '@/models/Subscriber';
@@ -81,6 +82,11 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ slu
         subscriber = await Subscriber.create({ email: body.email });
       }
       return NextResponse.json({ success: true, data: subscriber, message: 'Subscribed successfully' }, { status: 201 });
+    }
+
+    if (slug[0] === 'apply') {
+      const application = await JobApplication.create(body);
+      return NextResponse.json({ success: true, data: application, message: 'Application submitted successfully' }, { status: 201 });
     }
 
     return NextResponse.json({ success: false, message: 'Route not found' }, { status: 404 });
