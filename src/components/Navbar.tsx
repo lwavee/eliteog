@@ -65,12 +65,14 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-md' : 'py-5 bg-transparent'
+        scrolled
+          ? 'py-3.5 bg-white/85 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
+          : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="relative w-44 h-14 flex items-center">
+        <Link href="/" className="relative w-44 h-14 flex items-center transition-transform hover:scale-[1.02]">
           <Image
             src="/logo.png"
             alt="EliteOps Global Logo"
@@ -88,7 +90,7 @@ export const Navbar: React.FC = () => {
               {item.dropdown ? (
                 <button
                   onClick={() => toggleDropdown(item.name)}
-                  className="flex items-center gap-1.5 text-sm text-slate-600 hover:text-royal-600 font-semibold transition-colors focus:outline-none cursor-pointer"
+                  className="flex items-center gap-1.5 text-sm text-slate-700 hover:text-royal-600 font-semibold transition-colors focus:outline-none cursor-pointer py-1"
                 >
                   {item.name}
                   <FaChevronDown className={`text-[10px] transition-transform duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
@@ -96,7 +98,7 @@ export const Navbar: React.FC = () => {
               ) : (
                 <Link
                   href={item.path}
-                  className="text-sm text-slate-600 hover:text-royal-600 font-semibold transition-colors"
+                  className="text-sm text-slate-700 hover:text-royal-600 font-semibold transition-colors py-1"
                 >
                   {item.name}
                 </Link>
@@ -104,12 +106,12 @@ export const Navbar: React.FC = () => {
 
               {/* Dropdown Menu */}
               {item.dropdown && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-white border border-slate-200 rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl py-2">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-2xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-2xl py-2 z-50">
                   {item.dropdown.map((sub, sIdx) => (
                     <Link
                       key={sIdx}
                       href={sub.path}
-                      className="block px-5 py-2.5 text-xs text-slate-500 hover:text-royal-600 hover:bg-slate-50 transition-all"
+                      className="block px-5 py-2.5 text-xs text-slate-600 hover:text-royal-600 hover:bg-royal-50/60 font-medium transition-all"
                     >
                       {sub.name}
                     </Link>
@@ -124,9 +126,8 @@ export const Navbar: React.FC = () => {
         <div className="hidden lg:flex items-center gap-4">
           <Link
             href="#contact"
-            className="relative overflow-hidden px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-royal-600 to-blue-500 hover:from-royal-500 hover:to-blue-400 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] hover:scale-[1.03] transition-all group"
+            className="btn-shine relative overflow-hidden px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-royal-600 via-royal-500 to-blue-500 hover:from-royal-500 hover:to-blue-400 text-white shadow-[0_4px_15px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_25px_rgba(37,99,235,0.5)] hover:scale-[1.03] transition-all group"
           >
-            <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover:animate-[shimmer_1.5s_infinite]"></span>
             <span className="relative">Book Free Consultation</span>
           </Link>
         </div>

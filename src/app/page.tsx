@@ -173,87 +173,119 @@ export default function Home() {
       <Navbar />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-white noise-bg">
-        {/* Floating gradient shapes */}
+      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-white noise-bg bg-grid-pattern">
+        {/* Floating ambient glow spheres */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-royal-600/10 rounded-full blur-[120px] animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-10 w-[450px] h-[450px] bg-blue-500/5 rounded-full blur-[140px] animate-pulse-slow" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-20 right-10 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[140px] animate-pulse-slow" style={{ animationDelay: '3s' }}></div>
 
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full z-10">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="flex flex-col gap-6"
           >
-            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-royal-600 bg-royal-50 border border-royal-100 px-4.5 py-1.5 rounded-full w-fit">
-              Enterprise Operations Partner
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy-950 leading-tight font-display">
+            {/* Live operational badge */}
+            <div className="flex items-center gap-2.5 bg-royal-50/90 border border-royal-200/80 px-4 py-1.5 rounded-full w-fit backdrop-blur-md shadow-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-royal-700 font-display">
+                24/7 Global Operations Active
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy-950 leading-[1.12] font-display">
               Enterprise-grade Back Office & <br />
               <span className="text-gradient">Digital Transformation</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-xl">
-              EliteOps Global helps ambitious companies scale secure operational workflows, reduce costs, and launch premium digital products with dedicated teams, modern automation, and strong service-level governance.
+            
+            <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl font-medium">
+              EliteOps Global delivers dedicated staffing teams, automated data queues, and custom Next.js web applications to cut operating costs and accelerate business performance worldwide.
             </p>
-            <div className="flex flex-wrap gap-4 mt-4">
+
+            <div className="flex flex-wrap gap-4 mt-2">
               <a
                 href="#contact"
-                className="px-8 py-4 text-sm font-semibold rounded-full bg-gradient-to-r from-royal-600 to-blue-500 hover:from-royal-500 hover:to-blue-400 text-white shadow-lg shadow-royal-500/25 hover:shadow-royal-500/40 hover:scale-[1.03] transition-all flex items-center gap-2"
+                className="btn-shine px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-royal-600 via-royal-500 to-blue-500 hover:from-royal-500 hover:to-blue-400 text-white shadow-[0_10px_25px_rgba(37,99,235,0.35)] hover:shadow-[0_15px_35px_rgba(37,99,235,0.5)] hover:scale-[1.03] transition-all flex items-center gap-2"
               >
-                Book Free Consultation <FaCalendarCheck />
+                Book Free Consultation <FaCalendarCheck size={14} />
               </a>
               <a
                 href="#contact"
-                className="px-8 py-4 text-sm font-semibold rounded-full bg-white text-navy-950 border border-slate-200 hover:bg-slate-50 hover:border-royal-500/40 hover:scale-[1.03] shadow-sm transition-all"
+                className="px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full bg-white/90 text-navy-950 border border-slate-300 hover:bg-slate-50 hover:border-royal-500/50 hover:scale-[1.03] shadow-sm transition-all"
               >
                 Request a Proposal
               </a>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
-              <div className="glass p-4 rounded-2xl">
-                <p className="font-semibold text-navy-950">4x faster onboarding</p>
-                <p className="mt-1 text-slate-500">Start your first project in under 10 days with a ready-managed team.</p>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div className="glass-card-elevated p-4.5 rounded-2xl border-l-4 border-l-royal-500">
+                <p className="font-bold text-navy-950 font-display text-sm">4x Faster Onboarding</p>
+                <p className="mt-1 text-slate-500 leading-relaxed">Launch dedicated project queues within 10 business days.</p>
               </div>
-              <div className="glass p-4 rounded-2xl">
-                <p className="font-semibold text-navy-950">Enterprise-level security</p>
-                <p className="mt-1 text-slate-500">NDA protected operations with secure workflow review and compliance focus.</p>
+              <div className="glass-card-elevated p-4.5 rounded-2xl border-l-4 border-l-blue-500">
+                <p className="font-bold text-navy-950 font-display text-sm">ISO-Certified Security</p>
+                <p className="mt-1 text-slate-500 leading-relaxed">Strict NDA protocols, encrypted VPN gates, and 24/7 compliance.</p>
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">
+            <div className="mt-4 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">
               {['Insurance', 'Education', 'Healthcare', 'E-Commerce', 'Real Estate', 'Startups'].map((label) => (
-                <span key={label} className="px-3 py-2 rounded-full bg-slate-100 border border-slate-200">{label}</span>
+                <span key={label} className="px-3.5 py-1.5 rounded-full bg-white/80 border border-slate-200 shadow-2xs hover:border-royal-300 transition-colors">
+                  {label}
+                </span>
               ))}
             </div>
           </motion.div>
 
-          {/* Animated Globe Canvas Overlay */}
+          {/* Animated Globe with floating SLA badges */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <AnimatedGlobe />
+            <div className="relative w-full max-w-lg">
+              <AnimatedGlobe />
+
+              {/* Floating SLA Badge 1 */}
+              <div className="absolute top-10 -left-4 glass-card-elevated p-3.5 rounded-2xl hidden sm:flex items-center gap-3 shadow-xl z-20 animate-float">
+                <span className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl font-bold text-sm">✓</span>
+                <div>
+                  <p className="text-xs font-bold text-navy-950 font-display">99.8% Accuracy SLA</p>
+                  <p className="text-[10px] text-slate-500">QA Managed Verification</p>
+                </div>
+              </div>
+
+              {/* Floating SLA Badge 2 */}
+              <div className="absolute bottom-12 -right-4 glass-card-elevated p-3.5 rounded-2xl hidden sm:flex items-center gap-3 shadow-xl z-20 animate-float" style={{ animationDelay: '2.5s' }}>
+                <span className="p-2.5 bg-royal-50 text-royal-600 rounded-xl font-bold text-sm">⚡</span>
+                <div>
+                  <p className="text-xs font-bold text-navy-950 font-display">Global Delivery</p>
+                  <p className="text-[10px] text-slate-500">24/7 Shift Coverage</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50 border-t border-b border-slate-200">
+      <section className="py-16 bg-slate-50/80 border-t border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-center mb-10">
-            <div className="glass p-6 rounded-3xl">
-              <span className="text-3xl font-extrabold text-gradient font-display">10+</span>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Years of BPO experience</p>
+            <div className="glass-card-elevated p-6 rounded-3xl">
+              <span className="text-4xl font-extrabold text-gradient font-display">10+</span>
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Years BPO & Tech Experience</p>
             </div>
-            <div className="glass p-6 rounded-3xl">
-              <span className="text-3xl font-extrabold text-gradient font-display">ISO</span>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Level Security Standard</p>
+            <div className="glass-card-elevated p-6 rounded-3xl">
+              <span className="text-4xl font-extrabold text-gradient font-display">ISO</span>
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Data Security Standard</p>
             </div>
-            <div className="glass p-6 rounded-3xl">
-              <span className="text-3xl font-extrabold text-gradient font-display">250+</span>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Global Deployments</p>
+            <div className="glass-card-elevated p-6 rounded-3xl">
+              <span className="text-4xl font-extrabold text-gradient font-display">250+</span>
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.25em] mt-2">Global Operations Deployed</p>
             </div>
           </div>
 
@@ -358,13 +390,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
                 key={idx}
-                className="glass-card p-6 rounded-3xl flex flex-col gap-4 relative overflow-hidden"
+                className="glass-card-elevated p-7 rounded-3xl flex flex-col gap-4 relative overflow-hidden group border border-slate-200/80 hover:border-royal-400/50"
               >
-                <div className="p-3 bg-royal-50 border border-royal-100 rounded-2xl w-fit">
+                <div className="p-3.5 bg-gradient-to-br from-royal-50 via-blue-50 to-indigo-50 border border-royal-100 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300 shadow-sm">
                   {getIcon(service.icon)}
                 </div>
-                <h4 className="text-lg font-bold text-navy-950 font-display">{service.title}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">{service.desc || service.description}</p>
+                <h4 className="text-lg font-bold text-navy-950 font-display group-hover:text-royal-600 transition-colors">{service.title}</h4>
+                <p className="text-xs text-slate-500 leading-relaxed font-medium">{service.desc || service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -593,15 +625,15 @@ export default function Home() {
               <div className="flex flex-col gap-6 mt-6 text-sm text-slate-600 font-medium">
                 <div className="flex items-center gap-4">
                   <span className="p-3.5 bg-royal-50 border border-royal-100 text-royal-600 rounded-2xl"><FaPhone /></span>
-                  <span>+1 (800) 555-EOGB (3642)</span>
+                  <a href="tel:+918005669833" className="hover:text-royal-600 transition-colors">+91 80056 69833</a>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="p-3.5 bg-royal-50 border border-royal-100 text-royal-600 rounded-2xl"><FaEnvelope /></span>
-                  <span>inquire@eliteopsglobal.com</span>
+                  <a href="mailto:eliteopsglobal@gmail.com" className="hover:text-royal-600 transition-colors">eliteopsglobal@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="p-3.5 bg-royal-50 border border-royal-100 text-royal-600 rounded-2xl"><FaGlobe /></span>
-                  <span>www.eliteopsglobal.com</span>
+                  <a href="https://eliteog.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-royal-600 transition-colors">https://eliteog.vercel.app/</a>
                 </div>
               </div>
 

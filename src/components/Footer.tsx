@@ -33,29 +33,36 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-10">
+    <footer className="relative bg-slate-50/90 border-t border-slate-200/80 pt-20 pb-10 overflow-hidden">
+      {/* Top accent glowing gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-royal-500/50 to-transparent"></div>
+
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Company Info */}
         <div className="flex flex-col gap-6">
-          <Link href="/" className="relative w-44 h-12 flex items-center">
-            <Image sizes="(max-width: 768px) 176px, 176px" src="/logo.png" alt="EliteOps Global Logo" fill className="object-contain filter mix-blend-multiply opacity-80" />
+          <Link href="/" className="relative w-44 h-12 flex items-center transition-transform hover:scale-[1.02]">
+            <Image sizes="(max-width: 768px) 176px, 176px" src="/logo.png" alt="EliteOps Global Logo" fill className="object-contain filter mix-blend-multiply opacity-90" />
           </Link>
-          <p className="text-sm text-slate-500 leading-relaxed">
+          <p className="text-sm text-slate-500 leading-relaxed font-medium">
             EliteOps Global (EOG) is an enterprise outsourcing and digital transformation partner delivering reliable back-office, technology solutions, and virtual assistance worldwide.
           </p>
-          <div className="flex items-center gap-4 text-slate-400">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-royal-600 transition-colors">
-              <FaLinkedin size={18} />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-royal-600 transition-colors">
-              <FaFacebook size={18} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-royal-600 transition-colors">
-              <FaTwitter size={18} />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-royal-600 transition-colors">
-              <FaInstagram size={18} />
-            </a>
+          <div className="flex items-center gap-3">
+            {[
+              { icon: <FaLinkedin size={16} />, href: "https://linkedin.com" },
+              { icon: <FaFacebook size={16} />, href: "https://facebook.com" },
+              { icon: <FaTwitter size={16} />, href: "https://twitter.com" },
+              { icon: <FaInstagram size={16} />, href: "https://instagram.com" },
+            ].map((social, idx) => (
+              <a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 bg-white border border-slate-200 text-slate-500 hover:text-royal-600 hover:border-royal-300 hover:bg-royal-50/50 rounded-xl transition-all shadow-2xs hover:scale-110"
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
 

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'EliteOps Global | Digital Solutions Partner',
     description: 'Enterprise virtual staffing, technology, back office data processing and custom Next.js web applications.',
-    url: 'https://eliteopsglobal.com',
+    url: 'https://eliteog.vercel.app/',
     siteName: 'EliteOps Global',
     images: [
       {

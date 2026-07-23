@@ -75,26 +75,41 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ slu
     }
 
     if (slug[0] === 'seed') {
-      const userCount = await User.countDocuments();
-      if (userCount > 0) {
-        return NextResponse.json({ success: false, message: 'Seeding not required. Admins already exist.' }, { status: 400 });
+      let admin = await User.findOne({ role: 'admin' });
+      if (!admin) {
+        admin = await User.findOne({ email: 'kapil@eliteog.com' });
       }
 
-      const admin = await User.create({
-        username: 'admin',
-        email: 'admin@eliteopsglobal.com',
-        password: 'adminpassword123',
-        role: 'admin',
-      });
+      if (admin) {
+        admin.email = 'kapil@eliteog.com';
+        admin.password = 'Kapil@70144';
+        await admin.save();
 
-      return NextResponse.json({
-        success: true,
-        message: 'Default admin seeded successfully',
-        credentials: {
-          email: 'admin@eliteopsglobal.com',
-          password: 'adminpassword123',
-        },
-      }, { status: 201 });
+        return NextResponse.json({
+          success: true,
+          message: 'Admin credentials updated successfully',
+          credentials: {
+            email: 'kapil@eliteog.com',
+            password: 'Kapil@70144',
+          },
+        }, { status: 200 });
+      } else {
+        admin = await User.create({
+          username: 'admin',
+          email: 'kapil@eliteog.com',
+          password: 'Kapil@70144',
+          role: 'admin',
+        });
+
+        return NextResponse.json({
+          success: true,
+          message: 'Admin account created successfully',
+          credentials: {
+            email: 'kapil@eliteog.com',
+            password: 'Kapil@70144',
+          },
+        }, { status: 201 });
+      }
     }
 
     return NextResponse.json({ success: false, message: 'Route not found' }, { status: 404 });
